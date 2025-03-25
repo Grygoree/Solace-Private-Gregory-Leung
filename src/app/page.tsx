@@ -58,7 +58,7 @@ export default function Home() {
       <div className="content-wrapper">
         <h1 className="page-title">Solace Advocates</h1>
 
-        <div className="mb-8">
+        <div className="mb-8 space-x-2">
           <input className="search-input" onChange={onChange} value={searchText}/>
           <button className="search-button" onClick={onClick}>Reset Search</button>
         </div>
