@@ -32,6 +32,6 @@
   }
 
   .table-row {
-    @apply border-b-4 border-gray-300 transition-colors duration-500 hover:bg-sky-200
+    @apply border-b-2 border-gray-300 transition-colors duration-500 hover:bg-sky-200
   }
 }

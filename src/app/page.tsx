@@ -98,6 +98,15 @@ export default function Home() {
               })}
             </tbody>
           </table>
+
+          <div className="flex justify-center items-center py-4 space-x-4">
+              <a href="#" className="text-blue-500 px-4 py-2 border border-blue-500 rounded-lg ">
+                Previous
+              </a>
+              <a href="#" className="text-blue-500 px-4 py-2 border border-blue-500 rounded-lg ">
+                Next 
+              </a>
+          </div>
         </div>
       </div>
     </main>
