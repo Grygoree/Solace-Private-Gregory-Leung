@@ -11,6 +11,11 @@ export default function Home() {
   useEffect(() => {
     console.log("fetching advocates...");
     fetch("/api/advocates").then((response) => {
+      if (!response.ok) {
+        console.error(response);
+        return;
+      }
+
       response.json().then((jsonResponse) => {
         const advocates = jsonResponse.data;
 
@@ -70,13 +75,15 @@ export default function Home() {
       <br />
       <table>
         <thead>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>City</th>
-          <th>Degree</th>
-          <th>Specialties</th>
-          <th>Years of Experience</th>
-          <th>Phone Number</th>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>City</th>
+            <th>Degree</th>
+            <th>Specialties</th>
+            <th>Years of Experience</th>
+            <th>Phone Number</th>
+          </tr>
         </thead>
         <tbody>
           {filteredAdvocates.map((advocate) => {
