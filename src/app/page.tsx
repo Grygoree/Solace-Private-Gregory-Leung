@@ -100,10 +100,10 @@ export default function Home() {
           </table>
 
           <div className="flex justify-center items-center py-4 space-x-4">
-              <a href="#" className="text-blue-500 px-4 py-2 border border-blue-500 rounded-lg ">
+              <a href="#" className="page-button">
                 Previous
               </a>
-              <a href="#" className="text-blue-500 px-4 py-2 border border-blue-500 rounded-lg ">
+              <a href="#" className="page-button">
                 Next 
               </a>
           </div>
