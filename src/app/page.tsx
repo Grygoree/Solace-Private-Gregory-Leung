@@ -33,11 +33,6 @@ export default function Home() {
     const searchTerm = e.target.value;
     setSearchText(e.target.value);
 
-    const searchSpan = document.getElementById("search-term");
-    if(searchSpan) {
-      searchSpan.innerHTML = searchTerm;
-    }
-
     console.log("filtering advocates...");
     const filteredAdvocates = advocates.filter((advocate) => {
       return (
@@ -59,52 +54,52 @@ export default function Home() {
   };
 
   return (
-    <main style={{ margin: "24px" }}>
-      <h1>Solace Advocates</h1>
-      <br />
-      <br />
-      <div>
-        <p>Search</p>
-        <p>
-          Searching for: <span id="search-term"></span>
-        </p>
-        <input style={{ border: "1px solid black" }} onChange={onChange} value={searchText}/>
-        <button onClick={onClick}>Reset Search</button>
-      </div>
-      <br />
-      <br />
-      <table>
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>City</th>
-            <th>Degree</th>
-            <th>Specialties</th>
-            <th>Years of Experience</th>
-            <th>Phone Number</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredAdvocates.map((advocate) => {
-            return (
+    <main className="page-container">
+      <div className="content-wrapper">
+        <h1 className="page-title">Solace Advocates</h1>
+
+        <div className="mb-8">
+          <input className="search-input" onChange={onChange} value={searchText}/>
+          <button className="search-button" onClick={onClick}>Reset Search</button>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="directory-table">
+            <thead>
               <tr>
-                <td>{advocate.firstName}</td>
-                <td>{advocate.lastName}</td>
-                <td>{advocate.city}</td>
-                <td>{advocate.degree}</td>
-                <td>
-                  {advocate.specialties.map((s) => (
-                    <div>{s}</div>
-                  ))}
-                </td>
-                <td>{advocate.yearsOfExperience}</td>
-                <td>{advocate.phoneNumber}</td>
+                <th className="table-header">First Name</th>
+                <th className="table-header">Last Name</th>
+                <th className="table-header">City</th>
+                <th className="table-header">Degree</th>
+                <th className="table-header">Specialties</th>
+                <th className="table-header">Years of Experience</th>
+                <th className="table-header">Phone Number</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {filteredAdvocates.map((advocate, i) => {
+                return (
+                  <tr key={i} className="table-row">
+                    <td>{advocate.firstName}</td>
+                    <td>{advocate.lastName}</td>
+                    <td>{advocate.city}</td>
+                    <td>{advocate.degree}</td>
+                    <td className="py-4">
+                      <ul className="list-disc">
+                        {advocate.specialties.map((s, i) => (
+                          <li key={i}>{s}</li>
+                        ))}
+                      </ul>
+                    </td>
+                    <td>{advocate.yearsOfExperience}</td>
+                    <td>{advocate.phoneNumber}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </main>
   );
 }
