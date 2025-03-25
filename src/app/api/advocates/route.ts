@@ -14,9 +14,11 @@ export async function GET(request: Request) {
   // const data = await db.select().from(advocates);
   const { searchParams } = new URL(request.url);
   const page = parseInt(searchParams.get('page') || '0', 10);
+  const clampedPage = (page <= 0 ? 0 : page)
+  
 
   const data = advocateData;
-  const offset = page * ITEMS_PER_PAGE;
+  const offset =  clampedPage * ITEMS_PER_PAGE;
   const end = offset + ITEMS_PER_PAGE;
 
   const paginatedData = data.slice(offset, end);
